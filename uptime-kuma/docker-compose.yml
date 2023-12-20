@@ -10,3 +10,9 @@ services:
     ports:
       - ${UPTIME_KUMA_PORT}:3001
     restart: always
+    networks:
+      - reverse-proxy
+
+networks:
+  reverse-proxy:
+    external: true
