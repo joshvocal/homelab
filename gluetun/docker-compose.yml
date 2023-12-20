@@ -34,6 +34,8 @@ services:
       # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
       - UPDATER_PERIOD=24h
       - SERVER_HOSTNAMES=${SERVER_HOSTNAMES}
+    networks:
+      - reverse-proxy
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -90,3 +92,7 @@ services:
     volumes:
       - ./data/prowlarr/config:/config
     restart: unless-stopped
+
+networks:
+  reverse-proxy:
+    external: true
