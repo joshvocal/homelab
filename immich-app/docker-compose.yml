@@ -26,6 +26,8 @@ services:
       - redis
       - database
     restart: always
+    networks:
+      - reverse-proxy
 
   immich-microservices:
     container_name: immich_microservices
@@ -74,3 +76,7 @@ services:
 volumes:
   pgdata:
   model-cache:
+
+networks:
+  reverse-proxy:
+    external: true
