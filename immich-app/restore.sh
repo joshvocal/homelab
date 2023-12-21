@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Uncomment to run this"
+
 # Uncomment
 # docker compose down -v  # CAUTION! Deletes all Immich data to start from scratch.
 # docker compose pull     # Update to latest version of Immich (if desired)

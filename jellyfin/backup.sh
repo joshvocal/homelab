@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -r ./data/ /mnt/docker/jellyfin
+rsync -r . /mnt/docker/jellyfin

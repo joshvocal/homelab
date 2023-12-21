@@ -1,2 +1,2 @@
 #!/bin/bash
-rsync -r ./data/ /mnt/docker/uptime-kuma
+rsync -r . /mnt/docker/uptime-kuma
