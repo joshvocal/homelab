@@ -16,6 +16,7 @@ services:
       - ${SONARR_PORT}:${SONARR_PORT} # Sonarr
       - ${RADARR_PORT}:${RADARR_PORT} # Radarr
       - ${PROWLARR_PORT}:${PROWLARR_PORT} # Prowlarr
+      - ${SABNZBD_PORT}:${SABNZBD_PORT} # SABnzbd
     volumes:
       - ./data/gluetun:/gluetun
     environment:
@@ -48,6 +49,21 @@ services:
       - WEBUI_PORT=${QBITTORRENT_PORT}
     volumes:
       - ./data/qbittorrent/config:/config
+      - /mnt/jellyfin/Downloads:/downloads
+    depends_on:
+      - gluetun
+    restart: always
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./data/sabnzbd/config:/config
       - /mnt/jellyfin/Downloads:/downloads
     depends_on:
       - gluetun
