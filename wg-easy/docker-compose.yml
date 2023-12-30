@@ -1,6 +1,4 @@
 version: "3.8"
-volumes:
-  etc_wireguard:
 
 services:
   wg-easy:
@@ -26,7 +24,7 @@ services:
     image: ghcr.io/wg-easy/wg-easy
     container_name: wg-easy
     volumes:
-      - etc_wireguard:/etc/wireguard
+      - ./data/etc/wireguard:/etc/wireguard
     ports:
       - "${WG_PORT}:51820/udp"
       - "${WG_UI_PORT}:51821/tcp"
