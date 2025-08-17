@@ -1,16 +1,25 @@
 services:
   caddy:
-    image: caddy
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: caddy
-    hostname: caddy
+    env_file:
+      - .env
+    environment:
+      - CLOUDFLARE_EMAIL=${CF_EMAIL}
+      - CLOUDFLARE_API_TOKEN=${CF_API_TOKEN}
+      - ACME_AGREE=true
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
       - "443:443/udp"
     volumes:
-      - ./data/etc/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - caddy
 
 networks:
-  reverse-proxy:
-    external: true
+  caddy:
+    driver: bridge
