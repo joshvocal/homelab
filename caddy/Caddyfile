@@ -9,6 +9,11 @@
     handle @jellyfin {
         reverse_proxy 192.168.1.25:8096
     }
+
+    @jellyseerr host fin.durian.party
+    handle @jellyseerr {
+        reverse_proxy 192.168.1.25:5055
+    }
     
     @proxmox host prox.durian.party
     handle @proxmox {
@@ -22,5 +27,25 @@
     @unraid host unraid.durian.party
     handle @unraid {
         reverse_proxy 192.168.1.21
+    }
+
+    @sonarr host son.durian.party
+    handle @sonarr {
+        reverse_proxy 192.168.1.25:8989
+    }
+
+    @radarr host rad.durian.party
+    handle @radarr {
+        reverse_proxy 192.168.1.25:7878
+    }
+
+    @prowlarr host prowl.durian.party
+    handle @prowlarr {
+        reverse_proxy 192.168.1.25:9696
+    }
+
+    @sabnzbd host sab.durian.party
+    handle @sabnzbd {
+        reverse_proxy 192.168.1.25:8080
     }
 }
