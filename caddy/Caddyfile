@@ -14,6 +14,11 @@
     handle @jellyseerr {
         reverse_proxy 192.168.1.25:5055
     }
+
+    @adguard host ad.durian.party
+    handle @adguard {
+    	reverse_proxy 192.168.1.23
+    }
     
     @proxmox host prox.durian.party
     handle @proxmox {
